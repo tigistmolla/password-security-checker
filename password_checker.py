@@ -1,17 +1,17 @@
 
-password = "Hello@123"
+from getpass import getpass
+
+password = getpass("Enter a test password: ")
 
 checks = {
-    "At least 8 characters": len(password) >= 8,
+    "At least 12 characters": len(password) >= 12,
     "Uppercase letter": any(c.isupper() for c in password),
     "Lowercase letter": any(c.islower() for c in password),
     "Number": any(c.isdigit() for c in password),
     "Special character": any(c in "!@#$%^&*()-_+" for c in password)
 }
 
-print("=== PASSWORD SECURITY CHECKER ===")
-print("Password:", "*" * len(password))
-print()
+print("\n=== PASSWORD SECURITY CHECKER ===")
 
 score = 0
 
@@ -22,8 +22,7 @@ for check, passed in checks.items():
     else:
         print("[FAIL]", check)
 
-print()
-print("Checks passed:", score, "out of", len(checks))
+print("\nChecks passed:", score, "out of", len(checks))
 
 if score <= 2:
     print("Result: Needs improvement")
