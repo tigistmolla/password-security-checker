@@ -1,17 +1,22 @@
 
-from getpass import getpass
+"""
+Password Security Checker
+Educational Python project by Tigist Haileeyesus Molla.
+"""
 
-password = getpass("Enter a test password: ")
+password = "Hello@123456"  # Sample password for testing only
 
 checks = {
     "At least 12 characters": len(password) >= 12,
     "Uppercase letter": any(c.isupper() for c in password),
     "Lowercase letter": any(c.islower() for c in password),
     "Number": any(c.isdigit() for c in password),
-    "Special character": any(c in "!@#$%^&*()-_+" for c in password)
+    "Special character": any(c in "!@#$%^&*()-_+" for c in password),
 }
 
-print("\n=== PASSWORD SECURITY CHECKER ===")
+print("=== PASSWORD SECURITY CHECKER ===")
+print("Password: " + "*" * len(password))
+print()
 
 score = 0
 
@@ -22,7 +27,8 @@ for check, passed in checks.items():
     else:
         print("[FAIL]", check)
 
-print("\nChecks passed:", score, "out of", len(checks))
+print()
+print("Checks passed:", score, "out of", len(checks))
 
 if score <= 2:
     print("Result: Needs improvement")
@@ -30,3 +36,7 @@ elif score <= 4:
     print("Result: Fair")
 else:
     print("Result: All basic checks passed")
+
+print()
+print("Note: This is an educational checker,")
+print("not a guarantee of password security.")
